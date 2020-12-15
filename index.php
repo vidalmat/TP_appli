@@ -47,10 +47,10 @@ function connectUser(){
     require "User.php";
     $user = new User($_POST["pseudo"], $_POST["password"]);
     if($user->verifyUser()){
-        return ["template" => "myspace"];
+        return ["template" => "myspace.php"];
     }else{
         echo "une erreur s'est produite";
-        return ["template" => "accueil"];
+        return ["template" => "accueil.php"];
     }
 }
 
