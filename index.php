@@ -43,7 +43,7 @@ switch($route) {
 
 function connectUser(){
     $user = new User($_POST);
-    if($user == verifyUser()){
+    if($user->verifyUser()){
         return ["template" => "myspace.php"];
     }else{
         echo "une erreur s'est produite";
