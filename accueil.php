@@ -19,7 +19,7 @@ require_once("index.php");
                         
             <input type="password" placeholder="Mot de passe" name="password" required ><br>
 
-            <input type="password" placeholder="Confirmez le mot de passe" name="password2" required ><br>
+            <input type="password" placeholder="Confirmez mot de passe" name="password2" required ><br>
             
             <input type="submit" id='submit' value='Inscription' >
 
