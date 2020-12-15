@@ -5,8 +5,7 @@
 // Lancement du mécanisme de session PHP
 session_start();
 
-$_SESSION["pseudo"] = ["Jean"];
-
+$_SESSION = array();
 
 var_dump($_SESSION);
 // ****************************** ROUTER ***********************************
@@ -22,9 +21,9 @@ switch($route) {
     break;
     case "formuser" : $template = showFormUser();
     break;
-    case "myspace" : $template = include("myspace.php");
-    break;
     case "connectuser" : $template = connectUser();
+    break;
+    case "myspace" : $template = include("myspace.php");
     break;
     case "insertuser" : insert_user();
     break;
@@ -48,10 +47,10 @@ function connectUser(){
     require "User.php";
     $user = new User($_POST["pseudo"], $_POST["password"]);
     if($user->verifyUser()){
-        return ["template" => "myspace.php"];
+        return ["template" => "myspace"];
     }else{
         echo "une erreur s'est produite";
-        return ["template" => "accueil.php"];
+        return ["template" => "accueil"];
     }
 }
 
