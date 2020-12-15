@@ -1,5 +1,6 @@
 <?php
 
+
 // ***************************** SESSION ***********************************
 // Lancement du mécanisme de session PHP
 session_start();
@@ -20,6 +21,8 @@ switch($route) {
     case "accueil" : $template = include("accueil.php");
     break;
     case "formuser" : $template = showFormUser();
+    break;
+    case "myspace" : $template = include("myspace.php");
     break;
     case "connectuser" : $template = connectUser();
     break;
@@ -42,7 +45,8 @@ switch($route) {
 
 
 function connectUser(){
-    $user = new User($_POST);
+    require "User.php";
+    $user = new User($_POST["pseudo"], $_POST["password"]);
     if($user->verifyUser()){
         return ["template" => "myspace.php"];
     }else{
@@ -71,7 +75,7 @@ function insert_user() {
     
     require_once "User.php";
 
-    $user = new User($_POST["pseudo"], $_POST["password"], $_POST["password2"]);
+    $user = new User($_POST["pseudo"], $_POST["password"]);
     $user->saveUser();
 
     // Pensez à commenter la redirection temporairement pour débuguer (voir vos var_dump)

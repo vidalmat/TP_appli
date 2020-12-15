@@ -6,12 +6,10 @@ class User {
 
     private $pseudo;
     private $password;
-    private $password2;
 
-    function __construct(string $pseudo, string $password, string $password2) {
+    function __construct(string $pseudo, string $password) {
         $this->pseudo = $pseudo;
         $this->password = $password;
-        $this->password2 = $password2;
     }
 
 
