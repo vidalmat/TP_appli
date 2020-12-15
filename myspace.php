@@ -11,4 +11,4 @@ require_once "index.php";
 
 
 
-<h1>Bienvenue <?php "index.php?route=myspace=ps" ?> </h1>
+<h1>Bienvenue <?= $_SESSION["pseudo"]; ?> dans votre espace personnel</h1>

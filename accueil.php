@@ -24,7 +24,7 @@ require_once("index.php");
 </form>
 
 
-<form action="index.php?route=formuser" method="POST">
+<form action="index.php?route=connectuser" method="POST">
     
         <h2>Se connecter</h2>
     

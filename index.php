@@ -5,7 +5,7 @@
 // Lancement du mécanisme de session PHP
 session_start();
 
-$_SESSION = array();
+
 
 var_dump($_SESSION);
 // ****************************** ROUTER ***********************************
@@ -45,13 +45,15 @@ switch($route) {
 
 function connectUser(){
     require "User.php";
-    $user = new User($_POST["pseudo"], $_POST["password"]);
+    $user = new User($_SESSION["pseudo"] = $_POST["pseudo"],$_POST["password"]);
     if($user->verifyUser()){
-        return ["template" => "myspace.php"];
+        header("Location:index.php?route=myspace");
+        exit;
     }else{
         echo "une erreur s'est produite";
         return ["template" => "accueil.php"];
     }
+    
 }
 
 
