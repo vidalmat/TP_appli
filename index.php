@@ -86,9 +86,31 @@ function insert_user() {
 }
 
 
-function inserttache(){
 
 
+function showFormTache(): array {
+
+    require_once "Tache.php";
+
+    $taches = Tache::getTaches();
+
+     var_dump($taches);
+
+    return ["template" => "accueil.php"];
+}
+
+
+
+function insertTache(){
+
+    require_once "Tache.php";
+
+    $tache = new Tache($_POST["tache"], $_POST["limitdate"]);
+    $tache->saveTache();
+
+    // Pensez à commenter la redirection temporairement pour débuguer (voir vos var_dump)
+    header("Location:index.php?route=formtache");
+    exit;
 
 }
 

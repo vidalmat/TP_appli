@@ -5,41 +5,39 @@ class Tache {
     private $tache;
     private $description;
     private $limitdate;
-    private $name;
 
-    function __construct(string $tache, string $description, string $limitdate, string $name) {
+    function __construct(string $tache, string $description, string $limitdate) {
         $this->tache = $tache;
         $this->description = $description;
         $this->limitdate = $limitdate;
-        $this->name = $name;
     }
 
 
     function saveTache(){
 
          // echo "Je récupère le contenu de mon fichier users.json :<br>";
-         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
+         $contenu = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";
          // var_dump($contenu);
  
          // echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
-         $users = json_decode($contenu);
+         $taches = json_decode($contenu);
          // var_dump($users);
     
-         $users = (is_array($users))? $users : [];
+         $taches = (is_array($taches))? $taches : [];
  
          // echo "Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode: <br>";
-         $user = get_object_vars($this);
+         $tache = get_object_vars($this);
          // var_dump($user);
  
          // echo "J'ajoute ce livre à mon tableau de livres (\$livres)";
-         array_push($users, $user);
+         array_push($taches, $tache);
          // var_dump($users);
  
          // echo "J'ouvre mon fichier users.json <br>";
-         $handle = fopen("datas/users.json", "w");
+         $handle = fopen("datas/taches.json", "w");
  
          // echo "Je réencode mon tableau au format JSON : <br>";
-         $json = json_encode($users);
+         $json = json_encode($taches);
          // var_dump($json);
  
          // echo "J'écris ma chaîne JSON dans mon fichier livres.json<br>";
@@ -49,17 +47,17 @@ class Tache {
 
     }
 
-    static function getUsers(): array {
+    static function getTaches(): array {
 
-        $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
+        $contenu = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";
         // var_dump($contenu);
 
-        $users = json_decode($contenu);
+        $taches = json_decode($contenu);
         // var_dump($users);
    
-        $users = (is_array($users))? $users : [];
+        $taches = (is_array($taches))? $taches : [];
 
-        return $users;
+        return $taches;
     }
 
 }
