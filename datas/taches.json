@@ -1,1 +1,7 @@
-[{"tache":"tache1","limitdate":"date1"},{"tache":"tache2","limitdate":"date2"},{"tache":"tache2","limitdate":"date2"}]
+[
+  { "tache": "tache1", "limitdate": "date1" },
+  { "tache": "tache2", "limitdate": "date2" },
+  { "tache": "tache2", "limitdate": "date2" },
+  { "tache": "tache2", "limitdate": "date1" },
+  { "tache": "tache2", "limitdate": "date2" }
+]

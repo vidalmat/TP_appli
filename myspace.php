@@ -30,3 +30,10 @@ $taches = $template["datas"];
     <input type="submit" id='submit' value='Envoyer'>
 
 </form>
+
+
+<ul>
+    <?php foreach($taches as $tache):?>
+	    <li>la tache <?= $tache->tache ?> et la date <?= $tache->limitdate ?> ont été choisies</li>
+	<?php endforeach ?>
+</ul>

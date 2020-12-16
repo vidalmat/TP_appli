@@ -6,8 +6,6 @@
 session_start();
 
 
-
-var_dump($_SESSION);
 // ****************************** ROUTER ***********************************
 // Récupération de la route via la requête utilisateur (GET) ?route=<route>
 // Si aucune route n'est définie, on lui donne pour valeur "default"
