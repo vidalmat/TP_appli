@@ -1,8 +1,7 @@
 <?php
 
 
-require_once "index.php";
-
+$taches = $template["datas"];
 
 
 
@@ -21,18 +20,11 @@ require_once "index.php";
         <option value="tache3">Tâche 3</option>
     </select>
 
-    <input type="submit" id='submit' value='Envoyer'>
-
-</form>
-
-
-<form action="index.php?route=insertdate" method="POST">
-
     <select name="date" id="date">
         <option value="">Date limite</option>
-        <option value="date1">1</option>
-        <option value="date2">2</option>
-        <option value="date3">3</option>
+        <option value="date1">octobre</option>
+        <option value="date2">novembre</option>
+        <option value="date3">décembre</option>
     </select>
 
     <input type="submit" id='submit' value='Envoyer'>

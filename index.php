@@ -27,7 +27,9 @@ switch($route) {
     break;
     case "insertuser" : insert_user();
     break;
-    case "insertTache" : insertTache();
+    case "formtache" : $template = showFormTache();
+    break;
+    case "inserttache" : insertTache();
     break;
     default : $template = showFormUser();
 }
@@ -47,7 +49,7 @@ function showMySpace(): array {
 
 function connectUser(){
     require "User.php";
-    $user = new User($_SESSION["pseudo"] = $_POST["pseudo"],$_POST["password"]);
+    $user = new User($_SESSION["pseudo"] = $_POST["pseudo"],$_SESSION["password"] = $_POST["password"]);
     if($user->verifyUser()){
         header("Location:index.php?route=myspace");
         exit;
@@ -80,7 +82,7 @@ function insert_user() {
     $user->saveUser();
 
     // Pensez à commenter la redirection temporairement pour débuguer (voir vos var_dump)
-    header("Location:index.php?route=formuser");
+    header("Location:index.php?route=formtache");
     exit;
     
 }
@@ -94,9 +96,7 @@ function showFormTache(): array {
 
     $taches = Tache::getTaches();
 
-     var_dump($taches);
-
-    return ["template" => "accueil.php"];
+    return ["template" => "myspace.php", "datas" => $taches];
 }
 
 
@@ -105,7 +105,7 @@ function insertTache(){
 
     require_once "Tache.php";
 
-    $tache = new Tache($_POST["tache"], $_POST["limitdate"]);
+    $tache = new Tache($_POST["tache"], $_POST["date"]);
     $tache->saveTache();
 
     // Pensez à commenter la redirection temporairement pour débuguer (voir vos var_dump)

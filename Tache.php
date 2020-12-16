@@ -3,12 +3,10 @@
 class Tache {
 
     private $tache;
-    private $description;
     private $limitdate;
 
-    function __construct(string $tache, string $description, string $limitdate) {
+    function __construct(string $tache, string $limitdate) {
         $this->tache = $tache;
-        $this->description = $description;
         $this->limitdate = $limitdate;
     }
 

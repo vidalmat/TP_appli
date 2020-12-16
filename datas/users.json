@@ -1,5 +1,1 @@
-[
-  { "pseudo": "Xoduss", "password": "azerty" },
-  { "pseudo": "Jean", "password": "azert" },
-  { "pseudo": "Tom", "password": "qsdfg" }
-]
+[{"pseudo":"Xoduss","password":"azerty"},{"pseudo":"Jean","password":"azert"},{"pseudo":"Tom","password":"qsdfg"},{"pseudo":"Tom","password":"hjkl"}]
