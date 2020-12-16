@@ -17,30 +17,32 @@ $route = (isset($_GET["route"]))? $_GET["route"] : "accueil";
 
 switch($route) {
 
-    case "accueil" : $template = include("accueil.php");
+    case "accueil" : $template = showHome();
     break;
     case "formuser" : $template = showFormUser();
     break;
     case "connectuser" : $template = connectUser();
     break;
-    case "myspace" : $template = include("myspace.php");
+    case "myspace" : $template = showMySpace();
     break;
     case "insertuser" : insert_user();
     break;
-    // On ajoute une nouvelle route pour chaque fonctionnalités
+    case "insertTache" : insertTache();
+    break;
     default : $template = showFormUser();
 }
 
-// ************************* FONCTIONS DE CONTROLE *************************
-// On déclare ici toutes les fonctions appelées par le router, en fonction du choix de l'utilisateur
+
+function showHome(): array {
+
+    return ["template" => "accueil.php"];
+}
 
 
+function showMySpace(): array {
 
-
-
-// ******************************* AFFICHAGE *******************************
-// L'affichage des templates se fait grâce à la variable $template (qui doit avoir une valeur)
-
+    return ["template" => "myspace.php"];
+}
 
 
 function connectUser(){
@@ -55,8 +57,6 @@ function connectUser(){
     }
     
 }
-
-
 
 
 function showFormUser(): array {
@@ -83,6 +83,13 @@ function insert_user() {
     header("Location:index.php?route=formuser");
     exit;
     
+}
+
+
+function inserttache(){
+
+
+
 }
 
 
@@ -116,7 +123,7 @@ function insert_user() {
 </nav>
 
 
-
+<?php require $template['template']; ?>
     
 </body>
 </html>
