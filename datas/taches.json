@@ -1,7 +1,1 @@
-[
-  { "tache": "tache1", "limitdate": "date1" },
-  { "tache": "tache2", "limitdate": "date2" },
-  { "tache": "tache2", "limitdate": "date2" },
-  { "tache": "tache2", "limitdate": "date1" },
-  { "tache": "tache2", "limitdate": "date2" }
-]
+[{"tache":"tache1","limitdate":"date1"},{"tache":"tache2","limitdate":"date2"},{"tache":"tache2","limitdate":"date2"},{"tache":"tache2","limitdate":"date1"},{"tache":"tache2","limitdate":"date2"},{"tache":"tache1","limitdate":"decembre"},{"tache":"tache2","limitdate":"octobre"},{"tache":"tache1","limitdate":"novembre"},{"tache":"tache3","limitdate":"novembre"},{"tache":"tache2","limitdate":"octobre"},{"tache":"tache2","limitdate":"novembre"}]

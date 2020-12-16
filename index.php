@@ -80,9 +80,9 @@ function insert_user() {
     $user->saveUser();
 
     // Pensez à commenter la redirection temporairement pour débuguer (voir vos var_dump)
-    header("Location:index.php?route=formtache");
+    header("Location:index.php?route=formuser");
     exit;
-    
+    var_dump($user);
 }
 
 
