@@ -45,6 +45,7 @@ class Tache {
 
     }
 
+    // fonction appelé sur l'index qui instancie les tâches dans un tableau (array)
     static function getTaches(): array {
 
         $contenu = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";

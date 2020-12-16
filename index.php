@@ -6,15 +6,11 @@
 session_start();
 
 
-// ****************************** ROUTER ***********************************
-// Récupération de la route via la requête utilisateur (GET) ?route=<route>
-// Si aucune route n'est définie, on lui donne pour valeur "default"
-
 // Début de la récupération pour mon router en utilisant GET venant de l'utilisateur 
 $route = (isset($_GET["route"]))? $_GET["route"] : "accueil";
 
 
-
+// Début du router
 switch($route) {
 
     case "accueil" : $template = showHome();
@@ -30,15 +26,18 @@ switch($route) {
     case "inserttache" : insertTache();
     break;
     default : $template = showFormUser();
+    // Le default est défini au cas où aucune route n'est apporté 
 }
+// fin du router 
 
 
+// cette fonction permet de définir la route de ma page d'accueil 
 function showHome(): array {
 
     return ["template" => "accueil.php"];
 }
 
-
+// cette fonction permet de définir la connexion d'un nouvel utilisateur, incluant une fonction verifyUser afin de vérifier le pseudo et le mdp
 function connectUser(){
     require "User.php";
     $user = new User($_SESSION["pseudo"] = $_POST["pseudo"],$_SESSION["password"] = $_POST["password"]);
@@ -52,7 +51,7 @@ function connectUser(){
     
 }
 
-
+// elle définie la fonction pour voir le formulaire utilisateur sous forme de tableau (array) appelant également getUsers (le tableau des utilisateurs)
 function showFormUser(): array {
 
     require_once "User.php";
@@ -65,7 +64,7 @@ function showFormUser(): array {
 }
 
 
-
+// fonction d'ajout d'un nouvel utilisateur et ensuite sauvegardé via la fonction saveUser dans la class User
 function insert_user() {
     
     require_once "User.php";
@@ -73,7 +72,7 @@ function insert_user() {
     $user = new User($_POST["pseudo"], $_POST["password"]);
     $user->saveUser();
 
-    // Pensez à commenter la redirection temporairement pour débuguer (voir vos var_dump)
+    // Redirection temporaire pour débuguer (via var_dump)
     header("Location:index.php?route=formuser");
     exit;
     var_dump($user);
@@ -81,7 +80,7 @@ function insert_user() {
 
 
 
-
+// elle définie la fonction pour voir le formulaire des tâches sous forme de tableau (array) appelant également getTaches (le tableau des tâches) de la class Tache
 function showFormTache(): array {
 
     require_once "Tache.php";
@@ -92,7 +91,7 @@ function showFormTache(): array {
 }
 
 
-
+// fonction d'ajout d'une nouvelle tâche et ensuite sauvegardé via la fonction saveTache dans la class Tache
 function insertTache(){
 
     require_once "Tache.php";
@@ -100,7 +99,7 @@ function insertTache(){
     $tache = new Tache($_POST["tache"], $_POST["date"]);
     $tache->saveTache();
 
-    // Pensez à commenter la redirection temporairement pour débuguer (voir vos var_dump)
+    // Redirection temporaire pour débuguer (via var_dump)
     header("Location:index.php?route=formtache");
     exit;
 
@@ -135,7 +134,7 @@ function insertTache(){
     </ul>
 </nav>
 
-
+<!-- appel du template -->
 <?php require $template['template']; ?>
     
 </body>

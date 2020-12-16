@@ -46,6 +46,8 @@ class User {
         fclose($handle);
     }
 
+    
+    // fonction appelé sur l'index qui instancie les utilsateurs dans un tableau (array)
     static function getUsers(): array {
 
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
@@ -60,7 +62,7 @@ class User {
     }
 
 
-
+    // fonction de vérification des utilisateurs avec un booléen et en créant une variable récupérant les données du fichier json afin de comparer et vérifier le pseudo et mdp d'un utilisateur existant 
     function verifyUser(){
         $connect = false;
         $tab = json_decode(file_get_contents("datas/users.json"));
