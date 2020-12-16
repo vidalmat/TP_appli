@@ -1,14 +1,16 @@
 <?php
 
 
-// ***************************** SESSION ***********************************
-// Lancement du mécanisme de session PHP
+
+// Début de la session PHP
 session_start();
 
 
 // ****************************** ROUTER ***********************************
 // Récupération de la route via la requête utilisateur (GET) ?route=<route>
 // Si aucune route n'est définie, on lui donne pour valeur "default"
+
+// Début de la récupération pour mon router en utilisant GET venant de l'utilisateur 
 $route = (isset($_GET["route"]))? $_GET["route"] : "accueil";
 
 
@@ -20,8 +22,6 @@ switch($route) {
     case "formuser" : $template = showFormUser();
     break;
     case "connectuser" : $template = connectUser();
-    break;
-    case "myspace" : $template = showMySpace();
     break;
     case "insertuser" : insert_user();
     break;
@@ -36,12 +36,6 @@ switch($route) {
 function showHome(): array {
 
     return ["template" => "accueil.php"];
-}
-
-
-function showMySpace(): array {
-
-    return ["template" => "myspace.php"];
 }
 
 
@@ -118,8 +112,7 @@ function insertTache(){
 
 // }
 
-// ******************************* AFFICHAGE *******************************
-// L'affichage des templates se fait grâce à la variable $template (qui doit avoir une valeur)
+
 
 
 ?>
