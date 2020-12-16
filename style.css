@@ -66,7 +66,7 @@ body{
 .connexion input{
     background: #dad8d8;
     height: 30px;
-    color: white;
+    color: rgb(58, 58, 58);
     border: 1px solid gray;
     border-radius: 5px;
     margin-left: 10px;
