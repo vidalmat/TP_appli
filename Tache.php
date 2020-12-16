@@ -4,6 +4,8 @@ class Tache {
 
     private $tache;
     private $limitdate;
+    private $iduser;
+    private $idtache;
 
     function __construct(string $tache, string $limitdate) {
         $this->tache = $tache;

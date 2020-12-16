@@ -6,6 +6,7 @@ class User {
 
     private $pseudo;
     private $password;
+    private $iduser;
 
     function __construct(string $pseudo, string $password) {
         $this->pseudo = $pseudo;
