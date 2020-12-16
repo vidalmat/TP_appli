@@ -22,9 +22,9 @@ $taches = $template["datas"];
 
     <select name="date" id="date">
         <option value="">Date limite</option>
-        <option value="date1">octobre</option>
-        <option value="date2">novembre</option>
-        <option value="date3">décembre</option>
+        <option value="octobre">octobre</option>
+        <option value="novembre">novembre</option>
+        <option value="decembre">décembre</option>
     </select>
 
     <input type="submit" id='submit' value='Envoyer'>
