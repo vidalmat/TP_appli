@@ -43,7 +43,7 @@ function connectUser(){
     require "User.php";
     $user = new User($_SESSION["pseudo"] = $_POST["pseudo"],$_SESSION["password"] = $_POST["password"]);
     if($user->verifyUser()){
-        header("Location:index.php?route=myspace");
+        header("Location:index.php?route=formtache");
         exit;
     }else{
         echo "une erreur s'est produite";
