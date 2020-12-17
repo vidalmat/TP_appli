@@ -4,14 +4,46 @@ require_once "users.php";
 
 class User {
 
+    
+    private $user_id;
     private $pseudo;
     private $password;
-    private $iduser;
 
-    function __construct(string $pseudo, string $password) {
+    public function __construct(string $pseudo, string $password, int $id = 0) {
+        $this->user_id = $id;
         $this->pseudo = $pseudo;
         $this->password = $password;
     }
+
+
+    public function getUserId(): int {
+        return $this->user_id;
+    }
+
+    public function setUserId(int $id) {
+        $this->user_id = $id;
+    }
+
+
+    public function getUserPseudo(): string {
+        return $this->pseudo;
+    }
+
+    public function setUserPseudo(string $pseudo) {
+        $this->pseudo = $pseudo;
+    }
+
+
+    
+    public function getUserPassword(): string {
+        return $this->password;
+    }
+
+    public function setUserpassword(string $password) {
+        $this->password = $password;
+    }
+
+
 
 
     function saveUser() {

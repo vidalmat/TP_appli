@@ -4,13 +4,53 @@ class Tache {
 
     private $tache;
     private $limitdate;
-    private $iduser;
-    private $idtache;
+    private $description;
+    private $user_id;
 
-    function __construct(string $tache, string $limitdate) {
+    public function __construct(string $description, string $user, string $limitdate, int $tache = 0) {
         $this->tache = $tache;
+        $this->description = $description;
+        $this->user_id = $user;
         $this->limitdate = $limitdate;
     }
+
+    public function getTache(): int {
+        return $this->tache;
+    }
+
+    public function setTache(int $tache) {
+        $this->tache = $tache;
+    }
+
+
+    public function getDescription(): string {
+        return $this->description;
+    }
+
+    public function setDescription(string $description) {
+        $this->description = $description;
+    }
+
+
+
+    public function getUser(): string {
+        return $this->user_id;
+    }
+
+    public function setUser(string $user) {
+        $this->user_id = $user;
+    }
+
+
+    public function getLimitDate(): string {
+        return $this->limitdate;
+    }
+
+    public function setLimitDate(string $limitdate) {
+        $this->limitdate = $limitdate;
+    }
+
+
 
 
     function saveTache(){
