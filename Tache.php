@@ -7,12 +7,15 @@ class Tache {
     private $description;
     private $user_id;
 
-    public function __construct(string $description, string $user, string $limitdate, int $tache = 0) {
+    public function __construct(string $desc, string $user, string $limitdate, int $tache = 0) {
         $this->tache = $tache;
-        $this->description = $description;
+        $this->description = $desc;
         $this->user_id = $user;
         $this->limitdate = $limitdate;
     }
+
+
+    // Application des getters et des setters permettant d'accéder aux valeurs des propriétés 
 
     public function getTache(): int {
         return $this->tache;
@@ -27,8 +30,8 @@ class Tache {
         return $this->description;
     }
 
-    public function setDescription(string $description) {
-        $this->description = $description;
+    public function setDescription(string $desc) {
+        $this->description = $desc;
     }
 
 
@@ -50,7 +53,7 @@ class Tache {
         $this->limitdate = $limitdate;
     }
 
-
+     // Fin des getters et setters
 
 
     function saveTache(){

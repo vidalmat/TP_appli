@@ -4,6 +4,17 @@ body{
     margin: 0;
 }
 
+.title h1{
+    display: inline-block;
+    margin: 2em;
+    margin-left: 12em;
+    text-transform: uppercase;
+    color: rgb(109, 109, 109);
+}
+
+.title h1 span{
+    color: #ff6123;
+}
 
 .conteneur_connexion{
     display: flex;

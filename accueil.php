@@ -5,6 +5,10 @@ require_once("index.php");
 
 ?>
 
+<div class="title">
+    <h1>Bienvenue sur mon organiseur personnel</h1>
+</div>
+
 <div class="conteneur_connexion">
 
     <div class="creation_compte">

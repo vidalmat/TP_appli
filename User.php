@@ -16,6 +16,8 @@ class User {
     }
 
 
+    // Application des getters et des setters permettant d'accéder aux valeurs des propriétés 
+
     public function getUserId(): int {
         return $this->user_id;
     }
@@ -43,7 +45,7 @@ class User {
         $this->password = $password;
     }
 
-
+    // Fin des getters et setters
 
 
     function saveUser() {

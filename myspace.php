@@ -9,8 +9,11 @@ $taches = $template["datas"];
 ?>
 
 
+<div class="title">
+    <h1>Bienvenue <span><?= $_SESSION["pseudo"]; ?></span> dans votre espace personnel</h1>
+</div>
 
-<h1>Bienvenue <?= $_SESSION["pseudo"]; ?> dans votre espace personnel</h1>
+
 
 <form action="index.php?route=inserttache" method="POST">
     <select name="tache" id="tache">
