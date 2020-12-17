@@ -72,10 +72,8 @@ function showFormUser(): array {
 
 // fonction d'ajout d'un nouvel utilisateur et ensuite sauvegardé via la fonction saveUser dans la class User
 function insert_user() {
-    
-    
 
-    $user = new User($_POST["pseudo"], $_POST["password"]);
+    $user = new User($_POST["pseudo"], $_POST["password"], $_POST["password2"]);
     $user->saveUser();
 
     if(!empty($_POST["pseudo"]) && !empty($_POST["password"]) && $_POST["password"] === $_POST["password2"]){
