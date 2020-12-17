@@ -85,7 +85,7 @@ function insert_user() {
 
     }else{
          // Redirection temporaire pour débuguer (via var_dump)
-        header("Location:index.php?route=accueil");
+        header("Location:index.php?route=formuser");
         exit;
         var_dump($user);
     }

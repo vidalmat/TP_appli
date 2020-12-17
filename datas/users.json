@@ -1,1 +1,4 @@
-[{"user_id":1,"pseudo":"Xoduss","password":"azerty"}]
+[
+  { "user_id": 1, "pseudo": "Xoduss", "password": "azerty" },
+  { "user_id": 2, "pseudo": "Jean", "password": "jean" }
+]

@@ -45,7 +45,7 @@ body{
     background: #ff572e;
     color: white;
     border-radius: 10px;
-    margin-left: 11.5em;
+    margin-left: 11.3em;
     margin-top: 10px;
     border: none;
 }
@@ -55,8 +55,9 @@ body{
     border-radius: 4px;
     border: 1px solid gray;
     margin: 2px;
-    margin-left: 110px;
+    margin-left: 105px;
     line-height: 20px;
+    font-weight: bold;
 }
 
 
@@ -92,7 +93,8 @@ body{
 }
 
 .connexion #submit{
-    background: #adadad;
+    background: #8f8f8f;
+    color: white;
     margin-top: 10px;
 }
 
