@@ -59,7 +59,7 @@ class User {
         // Je demande si $users existe en tableau, si c'est le cas, il restera lui-même, si non, le créer en tant que tel
         $users = (is_array($users))? $users : [];
 
-        // var_dump($users); // afin de vérifier ce que le tableau $users contient
+        var_dump($users); // afin de vérifier ce que le tableau $users contient
 
 
         //Variable de vérification du bon résultat de l'appel à la méthode (utilisateur enregistré)
