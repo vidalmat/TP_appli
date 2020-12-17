@@ -80,6 +80,8 @@ function insert_user() {
         $user = new User($_POST["pseudo"], $_POST["password"]);
         echo "Résultats : ";
         $user->saveUser();
+        header("Location:index.php?route=accueil");
+        exit;
 
     }else{
          // Redirection temporaire pour débuguer (via var_dump)
