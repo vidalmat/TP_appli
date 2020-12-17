@@ -39,9 +39,9 @@ function showHome(): array {
 
 // cette fonction permet de définir la connexion d'un nouvel utilisateur, incluant une fonction verifyUser afin de vérifier le pseudo et le mdp
 function connectUser(){
-    require "User.php";
-    $_SESSION["message"] = 
-    $user = new User($_SESSION["pseudo"] = $_POST["pseudo"],$_SESSION["password"] = $_POST["password"]);
+    require_once "User.php";
+    
+    $user = new User$_POST["pseudo"], $_POST["password"]);
     if($user->verifyUser()){
         header("Location:index.php?route=formtache");
         exit;
@@ -52,10 +52,6 @@ function connectUser(){
     
 }
 
-// }else if(!isset($_SESSION['pseudo']) != ($_POST["pseudo"]) || ($_SESSION["password"]) != ($_POST["password"])){
-//     echo "<p>une erreur s'est produite</p>";
-// }
-//     return ["template" => "accueil.php"];
 
 // elle définie la fonction pour voir le formulaire utilisateur sous forme de tableau (array) appelant également getUsers (le tableau des utilisateurs)
 function showFormUser(): array {
@@ -77,7 +73,7 @@ function insert_user() {
 
         require_once "User.php";
 
-        $user = new User($_POST["pseudo"], $_POST["password"]);
+        $user = new User($_POST["pseudo"], password_hash($_POST["password"], PASSWORD_DEFAULT)); // ajout de la fonctionnalité password_hash afin de crypter le mdp
         echo "Résultats : ";
         $user->saveUser();
         header("Location:index.php?route=accueil");

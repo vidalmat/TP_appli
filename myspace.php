@@ -35,7 +35,7 @@ $taches = $template["datas"];
 </form>
 
 
-<ul>
+<ul class="li">
     <?php foreach($taches as $tache):?>
 	    <li>la tache choisie est la <?= $tache->tache ?> ainsi que la date <?= $tache->limitdate ?></li>
 	<?php endforeach ?>

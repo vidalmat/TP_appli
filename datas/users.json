@@ -1,4 +1,12 @@
 [
-  { "user_id": 1, "pseudo": "Xoduss", "password": "azerty" },
-  { "user_id": 2, "pseudo": "Jean", "password": "jean" }
+  {
+    "user_id": 3,
+    "pseudo": "Tom",
+    "password": "$2y$10$j2HjD4HQFKphSJ1MWzK.QetALaG.yuStwszUpztPvKDppH8Vl2w.y"
+  },
+  {
+    "user_id": 4,
+    "pseudo": "Xoduss",
+    "password": "$2y$10$Ny5LLuCkImWeybwnNEwceuaMbGG1sKvWURSf1aTUDSRrDJ4KUUdJa"
+  }
 ]

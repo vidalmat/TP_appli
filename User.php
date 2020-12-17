@@ -114,18 +114,18 @@ class User {
 
 
     // fonction de vérification des utilisateurs avec un booléen et en créant une variable récupérant les données du fichier json afin de comparer et vérifier le pseudo et mdp d'un utilisateur existant 
-    function verifyUser(){
-        $connect = false;
-        $tab = json_decode(file_get_contents("datas/users.json"));
-        $tab = (is_array($tab))? $tab : [];
+    public function verifyUser(): bool{
+        $verif = false;
+        $users = json_decode(file_get_contents("datas/users.json"));
+        $users = (is_array($users))? $users : [];
         
-        foreach($tab as $value) {
-            if($value->pseudo == $this->pseudo && $value->password == $this->password) {
-                $connect = true; 
+        foreach($users as $user) {
+            if($user->pseudo == $this->pseudo) {
+                $verif = password_verify($this->password, $user->password); 
 
             }
         }
-        return $connect;
+        return $verif;
     }
 }
 
