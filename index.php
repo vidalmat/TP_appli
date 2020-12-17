@@ -83,15 +83,15 @@ function insert_user() {
         require_once "User.php";
 
         $user = new User($_POST["pseudo"], $_POST["password"]);
+        echo "Résultats : ";
         $user->saveUser();
 
-    }else[
-
-    ]
-    // Redirection temporaire pour débuguer (via var_dump)
-    header("Location:index.php?route=formuser");
-    exit;
-    var_dump($user);
+    }else{
+         // Redirection temporaire pour débuguer (via var_dump)
+        header("Location:index.php?route=accueil");
+        exit;
+        var_dump($user);
+    }
 }
 
 

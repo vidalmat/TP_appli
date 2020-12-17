@@ -59,24 +59,45 @@ class User {
         // Je demande si $users existe en tableau, si c'est le cas, il restera lui-même, si non, le créer en tant que tel
         $users = (is_array($users))? $users : [];
 
-        //Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode
-        $user = get_object_vars($this);
+        // var_dump($users); // afin de vérifier ce que le tableau $users contient
 
-        //J'ajoute ce user à mon tableau des users (\$users)
-        array_push($users, $user);
 
-        //J'ouvre mon fichier users.json
-        $handle = fopen("datas/users.json", "w");
+        //Variable de vérification du bon résultat de l'appel à la méthode (utilisateur enregistré)
+        $verif = true;
 
-        //Je réencode mon tableau au format JSON
-        $json = json_encode($users);
+        // Je parcours mon tableau (ma liste d'utilisateurs) :
+        foreach($users as $user) {
+            //Si l'on rencontre un utilisateur ayant le même pseudo, on ne permettra pas l'enregistrement de l'utilisateur courant 
+            if($user->pseudo == $this->pseudo) {
+                $verif = false;
+            }
+        }
 
-        //J'écris ma chaîne JSON dans mon fichier users.json
-        fwrite($handle, $json);
-        //Je ferme mon fichier !
-        fclose($handle);
+        if($verif) {
 
-        return false;
+            $lastkey = (array_key_last($users) != null)? array_key_last($users) : 0;
+            $this->user_id = (!empty($users))? $users[$lastkey]->user_id + 1 : 1;
+
+            //Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode
+            $user = get_object_vars($this);
+
+            //J'ajoute ce user à mon tableau des users (\$users)
+            array_push($users, $user);
+
+            //J'ouvre mon fichier users.json
+            $handle = fopen("datas/users.json", "w");
+
+            //Je réencode mon tableau au format JSON
+            $json = json_encode($users);
+
+            //J'écris ma chaîne JSON dans mon fichier users.json
+            $verif = (fwrite($handle, $json))? true : false;
+            //Je ferme mon fichier !
+            fclose($handle);
+
+        }
+
+        return $verif;
     }
 
     
