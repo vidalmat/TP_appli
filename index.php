@@ -19,7 +19,7 @@ switch($route) {
     break;
     case "connectuser" : $template = connectUser();
     break;
-    case "insertuser" : insert_user();
+    case "insertuser" : insert_user(); // on ne met pas le $template car il s'agit d'une redirection avec le header
     break;
     case "formtache" : $template = showFormTache();
     break;
@@ -40,6 +40,7 @@ function showHome(): array {
 // cette fonction permet de définir la connexion d'un nouvel utilisateur, incluant une fonction verifyUser afin de vérifier le pseudo et le mdp
 function connectUser(){
     require "User.php";
+    $_SESSION["message"] = 
     $user = new User($_SESSION["pseudo"] = $_POST["pseudo"],$_SESSION["password"] = $_POST["password"]);
     if($user->verifyUser()){
         header("Location:index.php?route=formtache");
@@ -50,6 +51,11 @@ function connectUser(){
     }
     
 }
+
+// }else if(!isset($_SESSION['pseudo']) != ($_POST["pseudo"]) || ($_SESSION["password"]) != ($_POST["password"])){
+//     echo "<p>une erreur s'est produite</p>";
+// }
+//     return ["template" => "accueil.php"];
 
 // elle définie la fonction pour voir le formulaire utilisateur sous forme de tableau (array) appelant également getUsers (le tableau des utilisateurs)
 function showFormUser(): array {
@@ -67,11 +73,21 @@ function showFormUser(): array {
 // fonction d'ajout d'un nouvel utilisateur et ensuite sauvegardé via la fonction saveUser dans la class User
 function insert_user() {
     
-    require_once "User.php";
+    
 
     $user = new User($_POST["pseudo"], $_POST["password"]);
     $user->saveUser();
 
+    if(!empty($_POST["pseudo"]) && !empty($_POST["password"]) && $_POST["password"] === $_POST["password2"]){
+
+        require_once "User.php";
+
+        $user = new User($_POST["pseudo"], $_POST["password"]);
+        $user->saveUser();
+
+    }else[
+
+    ]
     // Redirection temporaire pour débuguer (via var_dump)
     header("Location:index.php?route=formuser");
     exit;

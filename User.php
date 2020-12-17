@@ -48,37 +48,35 @@ class User {
     // Fin des getters et setters
 
 
-    function saveUser() {
+    function saveUser(): bool {
 
-        // echo "Je récupère le contenu de mon fichier users.json :<br>";
+        //Je récupère le contenu de mon fichier users.json sous forme de chaîne de caractère
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
-        // var_dump($contenu);
 
-        // echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
+        //Je décode mon JSON en structure PHP (tableau associatif)
         $users = json_decode($contenu);
-        // var_dump($users);
-   
+
+        // Je demande si $users existe en tableau, si c'est le cas, il restera lui-même, si non, le créer en tant que tel
         $users = (is_array($users))? $users : [];
 
-        // echo "Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode: <br>";
+        //Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode
         $user = get_object_vars($this);
-        // var_dump($user);
 
-        // echo "J'ajoute ce livre à mon tableau de livres (\$livres)";
+        //J'ajoute ce user à mon tableau des users (\$users)
         array_push($users, $user);
-        // var_dump($users);
 
-        // echo "J'ouvre mon fichier users.json <br>";
+        //J'ouvre mon fichier users.json
         $handle = fopen("datas/users.json", "w");
 
-        // echo "Je réencode mon tableau au format JSON : <br>";
+        //Je réencode mon tableau au format JSON
         $json = json_encode($users);
-        // var_dump($json);
 
-        // echo "J'écris ma chaîne JSON dans mon fichier livres.json<br>";
+        //J'écris ma chaîne JSON dans mon fichier users.json
         fwrite($handle, $json);
-        // echo "Je ferme mon fichier !";
+        //Je ferme mon fichier !
         fclose($handle);
+
+        return false;
     }
 
     
@@ -86,10 +84,8 @@ class User {
     static function getUsers(): array {
 
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
-        // var_dump($contenu);
 
         $users = json_decode($contenu);
-        // var_dump($users);
    
         $users = (is_array($users))? $users : [];
 
