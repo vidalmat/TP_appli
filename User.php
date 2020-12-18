@@ -47,7 +47,7 @@ class User {
     // Fin des getters et setters
 
 
-    function saveUser(): bool {
+    public function saveUser(): bool {
 
         //Je récupère le contenu de mon fichier users.json sous forme de chaîne de caractère
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
@@ -58,7 +58,7 @@ class User {
         // Je demande si $users existe en tableau, si c'est le cas, il restera lui-même, si non, le créer en tant que tel
         $users = (is_array($users))? $users : [];
 
-        var_dump($users); // afin de vérifier ce que le tableau $users contient
+        //var_dump($users); // afin de vérifier ce que le tableau $users contient
 
 
         //Variable de vérification du bon résultat de l'appel à la méthode (utilisateur enregistré)
@@ -100,17 +100,17 @@ class User {
     }
 
     
-    // fonction appelé sur l'index qui instancie les utilsateurs dans un tableau (array)
-    static function getUsers(): array {
+    // // fonction appelé sur l'index qui instancie les utilsateurs dans un tableau (array)
+    // static function getUsers(): array {
 
-        $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
+    //     $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
 
-        $users = json_decode($contenu);
+    //     $users = json_decode($contenu);
    
-        $users = (is_array($users))? $users : [];
+    //     $users = (is_array($users))? $users : [];
 
-        return $users;
-    }
+    //     return $users;
+    // }
 
 
     // fonction de vérification des utilisateurs avec un booléen et en créant une variable récupérant les données du fichier json afin de comparer et vérifier le pseudo et mdp d'un utilisateur existant 

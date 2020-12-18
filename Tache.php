@@ -58,53 +58,84 @@ class Tache {
 
     function saveTache(){
 
-         // echo "Je récupère le contenu de mon fichier users.json :<br>";
+         //Je récupère le contenu de mon fichier users.json :<br>";
          $contenu = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";
-         // var_dump($contenu);
  
-         // echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
+         //Je décode mon JSON en structure PHP (tableau associatif) :<br>";
          $taches = json_decode($contenu);
-         // var_dump($users);
     
          $taches = (is_array($taches))? $taches : [];
  
-         // echo "Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode: <br>";
+         //Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode: <br>";
          $tache = get_object_vars($this);
-         // var_dump($user);
  
-         // echo "J'ajoute ce livre à mon tableau de livres (\$livres)";
+         //J'ajoute cette tache à mon tableau de taches (\$taches)";
          array_push($taches, $tache);
          // var_dump($users);
  
-         // echo "J'ouvre mon fichier users.json <br>";
+         //J'ouvre mon fichier users.json <br>";
          $handle = fopen("datas/taches.json", "w");
  
-         // echo "Je réencode mon tableau au format JSON : <br>";
+         //Je réencode mon tableau au format JSON : <br>";
          $json = json_encode($taches);
          // var_dump($json);
  
-         // echo "J'écris ma chaîne JSON dans mon fichier livres.json<br>";
+         //J'écris ma chaîne JSON dans mon fichier taches.json<br>";
          fwrite($handle, $json);
-         // echo "Je ferme mon fichier !";
+         //Je ferme mon fichier !";
          fclose($handle);
 
-    }
+           //Variable de vérification du bon résultat de l'appel à la méthode (utilisateur enregistré)
+           $verif = true;
 
-    // fonction appelé sur l'index qui instancie les tâches dans un tableau (array)
-    static function getTaches(): array {
-
-        $contenu = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";
-        // var_dump($contenu);
-
-        $taches = json_decode($contenu);
-        // var_dump($users);
+           // Je parcours mon tableau (ma liste des tâches) :
+           foreach($taches as $tache) {
+               if($tache->description == $this->description) {
+                   $verif = false;
+               }
+           }
    
-        $taches = (is_array($taches))? $taches : [];
+           if($verif) {
+   
+               $lastkey = (array_key_last($taches) != null)? array_key_last($taches) : 0;
+               $this->user_id = (!empty($taches))? $taches[$lastkey]->user_id + 1 : 1;
+   
+               //Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode
+               $tache = get_object_vars($this);
+   
+               //J'ajoute ce user à mon tableau des taches (\$taches)
+               array_push($taches, $tache);
+   
+               //J'ouvre mon fichier taches.json
+               $handle = fopen("datas/taches.json", "w");
+   
+               //Je réencode mon tableau au format JSON
+               $json = json_encode($taches);
+   
+               //J'écris ma chaîne JSON dans mon fichier taches.json
+               $verif = (fwrite($handle, $json))? true : false;
+               //Je ferme mon fichier !
+               fclose($handle);
+   
+           }
+   
+           return $verif;
+     }
 
-        return $taches;
     }
 
-}
+//     // fonction appelé sur l'index qui instancie les tâches dans un tableau (array)
+//     static function getTaches(): array {
+
+//         $contenu = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";
+
+//         $taches = json_decode($contenu);
+   
+//         $taches = (is_array($taches))? $taches : [];
+
+//         return $taches;
+
+// }
 
 
 

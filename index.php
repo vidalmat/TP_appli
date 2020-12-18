@@ -10,22 +10,31 @@ session_start();
 $route = (isset($_GET["route"]))? $_GET["route"] : "accueil";
 
 
+// Liste des routes: 
+// Par défaut: Affichage de la page d'accueil
+// index.php? route = accueil => Affichage de la page d'accueil
+// index.php? route = insertuser => Ajout d'un nouvel utilisateur, redirigée vers l'affichage de la page d'accueil
+// index.php? route = connectuser => Connexion d'un utilisateur, redirigée vers espace membre
+// index.php? route = formuser => Affichage de l'espace membre
+//index.php?route=inserttache => Ajout d'une nouvelle tâche qui sera redirigée vers la page myspace
+
 // Début du router
 switch($route) {
 
     case "accueil" : $template = showHome();
     break;
-    case "formuser" : $template = showFormUser();
+    case "formuser" : $template = showFormUser();//affichage de my space
     break;
-    case "connectuser" : $template = connectUser();
+    case "connectuser" : $template = connectUser();//Redirigé vers my space
     break;
-    case "insertuser" : insert_user(); // on ne met pas le $template car il s'agit d'une redirection avec le header
+    case "insertuser" : insert_user(); //Redirigé vers la page d'accueil, on ne met pas le $template car il s'agit d'une redirection avec le header
     break;
-    case "formtache" : $template = showFormTache();
+    // case "formtache" : $template = showFormTache();
+    // break;
+    case "inserttache" : insertTache(); //redirigée vers la page myspace
+
     break;
-    case "inserttache" : insertTache();
-    break;
-    default : $template = showFormUser();
+    default : $template = showHome();
     // Le default est défini au cas où aucune route n'est apporté 
 }
 // fin du router 
@@ -34,7 +43,7 @@ switch($route) {
 // cette fonction permet de définir la route de ma page d'accueil 
 function showHome(): array {
 
-    return ["template" => "accueil.php"];
+    return ["template" => "accueil.php", "datas" => null ];
 }
 
 // cette fonction permet de définir la connexion d'un nouvel utilisateur, incluant une fonction verifyUser afin de vérifier le pseudo et le mdp
@@ -53,23 +62,17 @@ function connectUser(){
             $_SESSION["errors"] ["connexion"] = "Une erreur s'est produite, identifiant et/ou mot de passe incorrect";
         }
         }else{
-            $_SESSION["errors"] ["champs"] = "l'ensemble des champs est obligatoire";
+            $_SESSION["errors"] ["champs"] = "L'ensemble des champs est obligatoire";
         }
     header("Location:index.php?route=accueil");
     exit;
 }
 
 
-// elle définie la fonction pour voir le formulaire utilisateur sous forme de tableau (array) appelant également getUsers (le tableau des utilisateurs)
+// elle affiche l'espace membre 
 function showFormUser(): array {
 
-    require_once "User.php";
-
-    $users = User::getUsers();
-
-     var_dump($users);
-
-    return ["template" => "accueil.php"];
+    return ["template" => "myspace.php", "datas" => null];
 }
 
 
@@ -91,7 +94,7 @@ function insert_user() {
     }
 
       // Redirection temporaire pour débuguer (via var_dump)
-      header("Location:index.php?route=formuser");
+      header("Location:index.php?route=accueil");
       exit;
       var_dump($user);
       
@@ -100,26 +103,30 @@ function insert_user() {
 
 
 // elle définie la fonction pour voir le formulaire des tâches sous forme de tableau (array) appelant également getTaches (le tableau des tâches) de la class Tache
-function showFormTache(): array {
+// function showFormTache(): array {
 
-    require_once "Tache.php";
+//     require_once "Tache.php";
 
-    $taches = Tache::getTaches();
+//     $taches = Tache::getTaches();
 
-    return ["template" => "myspace.php", "datas" => $taches];
-}
+//     return ["template" => "myspace.php", "datas" => $taches];
+// }
 
 
 // fonction d'ajout d'une nouvelle tâche et ensuite sauvegardé via la fonction saveTache dans la class Tache
 function insertTache(){
 
     require_once "Tache.php";
+    var_dump($_POST);
+        // 'description' =>  chaîne  'tache1'  (longueur = 6) 
+        // 'date limite' =>  chaîne  'octobre'  (longueur = 7)
 
-    $tache = new Tache($_POST["tache"], $_POST["date"]);
+
+    $tache = new Tache($_POST["description"], $_POST["limitdate"], $_SESSION["user"] ["user_id"]);
     $tache->saveTache();
 
-    // Redirection temporaire pour débuguer (via var_dump)
-    header("Location:index.php?route=formtache");
+    // Redirection vers la route formuser (l'espace membre)
+    header("Location:index.php?route=formuser");
     exit;
 
 }
