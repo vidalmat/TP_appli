@@ -1,12 +1,12 @@
 [
   {
     "user_id": 1,
-    "pseudo": "mat",
-    "password": "$2y$10$tWsi7.gP8Y22eIdNW3TsteW8miP5cas7J6mSu1yr9N4bYKe3zDdwq"
+    "pseudo": "Xoduss",
+    "password": "$2y$10$DkVHqG9EO6B6Mf.dDV8Oauv2xhDjc77DN5RjeKuNyhpmi13wRRdVK"
   },
   {
     "user_id": 2,
-    "pseudo": "Xoduss",
-    "password": "$2y$10$4QHL1V9NaxnN3iKvM1YoE.cxAf14Dsj4w.zVkXaDchYi4H6tiDHEu"
+    "pseudo": "Jean",
+    "password": "$2y$10$8CcGpqVWqsJQr.gGzPSTCOVC05S2yzwv6elLVbodXFA1RCy1Jl9OG"
   }
 ]

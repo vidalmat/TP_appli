@@ -7,7 +7,7 @@ class Tache {
     private $description;
     private $user_id;
 
-    public function __construct(string $limitdate, string $desc, string $user, int $id = 0) {
+    public function __construct(string $desc, string $limitdate, string $user, int $id = 0) {
         $this->idtache = $id;
         $this->description = $desc;
         $this->user_id = $user;
