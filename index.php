@@ -119,9 +119,7 @@ function insertTache(){
     $tache = new Tache($_POST["description"], $_POST["limitdate"], $_SESSION["user"] ["user_id"]);
     $tache->saveTache();
 
-    // Redirection vers la route formuser (l'espace membre)
-    header("Location:index.php?route=formuser");
-    exit;
+    return ["template" => "myspace.php", "datas" => $tache];
 
 }
 
