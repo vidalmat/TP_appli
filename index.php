@@ -30,7 +30,6 @@ switch($route) {
     case "insertuser" : insert_user(); //Redirigé vers la page d'accueil, on ne met pas le $template car il s'agit d'une redirection avec le header
     break;
     case "inserttache" : insertTache(); //redirigée vers la page myspace
-
     break;
     default : $template = showHome();
     // Le default est défini au cas où aucune route n'est apporté 
@@ -119,8 +118,8 @@ function insertTache(){
     $tache = new Tache($_POST["description"], $_POST["limitdate"], $_SESSION["user"] ["user_id"]);
     $tache->saveTache();
 
-    return ["template" => "myspace.php", "datas" => $tache];
-
+    header("Location:index.php?route=formuser");
+    exit;
 }
 
 

@@ -1,1 +1,12 @@
-[{"user_id":1,"pseudo":"mat","password":"$2y$10$tWsi7.gP8Y22eIdNW3TsteW8miP5cas7J6mSu1yr9N4bYKe3zDdwq"},{"user_id":2,"pseudo":"Xoduss","password":"$2y$10$mbyajXB8UUAHc8ixoP\/l7uD.5gtIQyjZUreg0waOiP1GBK5CXSCmC"}]
+[
+  {
+    "user_id": 1,
+    "pseudo": "mat",
+    "password": "$2y$10$tWsi7.gP8Y22eIdNW3TsteW8miP5cas7J6mSu1yr9N4bYKe3zDdwq"
+  },
+  {
+    "user_id": 2,
+    "pseudo": "Xoduss",
+    "password": "$2y$10$4QHL1V9NaxnN3iKvM1YoE.cxAf14Dsj4w.zVkXaDchYi4H6tiDHEu"
+  }
+]

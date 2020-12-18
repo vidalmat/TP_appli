@@ -70,7 +70,7 @@ class Tache {
         // Variable de vérification du bon résultat de l'appel à la méthode (utilisateur enregistré)
 
         $lastkey = (array_key_last($taches) != null)? array_key_last($taches) : 0;
-        $this->user_id = (!empty($taches))? $taches[$lastkey]->user_id + 1 : 1;
+        $this->idtache = (!empty($taches))? $taches[$lastkey]->user_id + 1 : 1;
 
         //Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode
         $tache = get_object_vars($this);
