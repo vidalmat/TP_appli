@@ -51,7 +51,7 @@ function showFormUser(): array {
 
     require_once "Tache.php";
 
-    $taches = Tache::getUserTache($_SESSION["user_id"]);
+    $taches = Tache::getUserTache($_SESSION[ 'user' ]["user_id"]);
 
     return ["template" => "myspace.php", "datas" => $taches];
 }
