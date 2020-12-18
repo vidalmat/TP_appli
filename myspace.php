@@ -1,9 +1,9 @@
 <?php
 
-var_dump($template);
+
 
 $taches = $template["datas"];
-
+var_dump($template["datas"]);
 
 ?>
 
