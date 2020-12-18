@@ -29,8 +29,6 @@ switch($route) {
     break;
     case "insertuser" : insert_user(); //Redirigé vers la page d'accueil, on ne met pas le $template car il s'agit d'une redirection avec le header
     break;
-    // case "formtache" : $template = showFormTache();
-    // break;
     case "inserttache" : insertTache(); //redirigée vers la page myspace
 
     break;
@@ -45,6 +43,20 @@ function showHome(): array {
 
     return ["template" => "accueil.php", "datas" => null ];
 }
+
+
+// elle affiche l'espace membre 
+function showFormUser(): array {
+
+
+    require_once "Tache.php";
+
+    $taches = Tache::getUserTache($_SESSION["user_id"]);
+
+    return ["template" => "myspace.php", "datas" => $taches];
+}
+
+
 
 // cette fonction permet de définir la connexion d'un nouvel utilisateur, incluant une fonction verifyUser afin de vérifier le pseudo et le mdp
 function connectUser(){
@@ -68,12 +80,6 @@ function connectUser(){
     exit;
 }
 
-
-// elle affiche l'espace membre 
-function showFormUser(): array {
-
-    return ["template" => "myspace.php", "datas" => null];
-}
 
 
 // fonction d'ajout d'un nouvel utilisateur et ensuite sauvegardé via la fonction saveUser dans la class User
@@ -99,18 +105,6 @@ function insert_user() {
       var_dump($user);
       
 }
-
-
-
-// elle définie la fonction pour voir le formulaire des tâches sous forme de tableau (array) appelant également getTaches (le tableau des tâches) de la class Tache
-// function showFormTache(): array {
-
-//     require_once "Tache.php";
-
-//     $taches = Tache::getTaches();
-
-//     return ["template" => "myspace.php", "datas" => $taches];
-// }
 
 
 // fonction d'ajout d'une nouvelle tâche et ensuite sauvegardé via la fonction saveTache dans la class Tache
@@ -161,7 +155,7 @@ function insertTache(){
 </nav>
 
 <!-- appel du template -->
-<?php require $template['template']; ?>
+<?php require $template["template"]; ?>
     
 </body>
 </html>

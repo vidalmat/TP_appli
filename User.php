@@ -99,51 +99,25 @@ class User {
         return $verif;
     }
 
-    
-    // // fonction appelé sur l'index qui instancie les utilsateurs dans un tableau (array)
-    // static function getUsers(): array {
-
-    //     $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
-
-    //     $users = json_decode($contenu);
-   
-    //     $users = (is_array($users))? $users : [];
-
-    //     return $users;
-    // }
-
 
     // fonction de vérification des utilisateurs avec un booléen et en créant une variable récupérant les données du fichier json afin de comparer et vérifier le pseudo et mdp d'un utilisateur existant 
     public function verifyUser(): bool{
+        $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json"): "" ;
+        $users = json_decode($contenu);
+        $users = ( is_array ($users))? $users : [];
+
         $verif = false;
-        $users = json_decode(file_get_contents("datas/users.json"));
-        $users = (is_array($users))? $users : [];
-        
-        foreach($users as $user) {
-            if($user->pseudo == $this->pseudo) {
-                $verif = password_verify($this->password, $user->password); 
-                $this->user_id = $user->user_id;
+
+        foreach ($users as $user) {
+            if ($user->pseudo == $this->pseudo ) {
+                $verif = password_verify($this->password , $user->password);
+                $this->user_id = $user->user_id ;
             }
         }
-        return $verif;
+
+        return  $verif ;
     }
 }
-
-
-// public function verifyUser(): bool{
-//     $verif = false;
-//     $tab = json_decode(file_get_contents("datas/users.json"));
-//     $tab = (is_array($tab))? $tab : [];
-    
-//     foreach($tab as $value) {
-//         if($value->pseudo == $this->pseudo && $value->password == $this->password) {
-//             $verif = true; 
-
-//         }
-//     }
-//     return $verif;
-// }
-// }
 
 ?>
 

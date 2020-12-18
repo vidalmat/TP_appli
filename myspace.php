@@ -1,11 +1,10 @@
 <?php
 
+var_dump($template);
 
 $taches = $template["datas"];
 
 
-
- 
 ?>
 
 
@@ -37,6 +36,8 @@ $taches = $template["datas"];
 
 <ul class="li">
     <?php foreach($taches as $tache):?>
-	    <li>la tache choisie est la <?= $tache->tache ?> ainsi que la date <?= $tache->limitdate ?></li>
+
+        <li>la tache choisie est la <?= $tache->description ?> ainsi que la date <?= $tache->limitdate ?></li>
+        
 	<?php endforeach ?>
 </ul>
