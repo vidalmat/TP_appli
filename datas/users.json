@@ -8,5 +8,10 @@
     "user_id": 2,
     "pseudo": "Jean",
     "password": "$2y$10$8CcGpqVWqsJQr.gGzPSTCOVC05S2yzwv6elLVbodXFA1RCy1Jl9OG"
+  },
+  {
+    "user_id": 3,
+    "pseudo": "Mat",
+    "password": "$2y$10$2KYOqK9UFgVFWYlEFfmMS.4ahx6wRLyb23ZR1Vw/GWCCUVoMXSole"
   }
 ]

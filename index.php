@@ -6,6 +6,9 @@
 session_start();
 
 
+require_once "utils/autoload.php";
+
+
 // Début de la récupération pour mon router en utilisant GET venant de l'utilisateur 
 $route = (isset($_GET["route"]))? $_GET["route"] : "accueil";
 
@@ -47,9 +50,6 @@ function showHome(): array {
 // elle affiche l'espace membre 
 function showFormUser(): array {
 
-
-    require_once "Tache.php";
-
     $taches = Tache::getUserTache($_SESSION["user"]["user_id"]);
 
     return ["template" => "myspace.php", "datas" => $taches];
@@ -59,7 +59,7 @@ function showFormUser(): array {
 
 // cette fonction permet de définir la connexion d'un nouvel utilisateur, incluant une fonction verifyUser afin de vérifier le pseudo et le mdp
 function connectUser(){
-    require_once "User.php";
+
     if(!empty($_POST["pseudo"]) && !empty($_POST["password"])){
     
         $user = new User($_POST["pseudo"], $_POST["password"]);
@@ -86,8 +86,6 @@ function insert_user() {
 
     if(!empty($_POST["pseudo"]) && !empty($_POST["password"]) && $_POST["password"] === $_POST["password2"]){
 
-        require_once "User.php";
-
         $user = new User($_POST["pseudo"], password_hash($_POST["password"], PASSWORD_DEFAULT)); // ajout de la fonctionnalité password_hash afin de crypter le mdp
         echo "Résultats : ";
         $user->saveUser();
@@ -109,7 +107,6 @@ function insert_user() {
 // fonction d'ajout d'une nouvelle tâche et ensuite sauvegardé via la fonction saveTache dans la class Tache
 function insertTache(){
 
-    require_once "Tache.php";
     var_dump($_POST);
         // 'description' =>  chaîne  'tache1'  (longueur = 6) 
         // 'date limite' =>  chaîne  'octobre'  (longueur = 7)
