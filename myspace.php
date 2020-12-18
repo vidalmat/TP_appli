@@ -1,15 +1,15 @@
 <?php
 
+var_dump($template["datas"]);
 
 
 $taches = $template["datas"];
-var_dump($template["datas"]);
 
 ?>
 
 
 <div class="title">
-    <h1>Bienvenue <span><?= $_SESSION["pseudo"]; ?></span> dans votre espace personnel</h1>
+    <h1>Bienvenue <span><?= $_SESSION["user"] ["pseudo"]; ?></span> dans votre espace personnel</h1>
 </div>
 
 
@@ -22,7 +22,7 @@ var_dump($template["datas"]);
         <option value="tache3">Tâche 3</option>
     </select>
 
-    <select name="deadline" id="deadline">
+    <select name="limitdate" id="limitdate">
         <option value="">Date limite</option>
         <option value="octobre">octobre</option>
         <option value="novembre">novembre</option>

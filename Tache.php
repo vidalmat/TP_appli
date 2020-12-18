@@ -7,7 +7,7 @@ class Tache {
     private $description;
     private $user_id;
 
-    public function __construct(string $desc, string $user, string $limitdate, int $id = 0) {
+    public function __construct(string $limitdate, string $desc, string $user, int $id = 0) {
         $this->idtache = $id;
         $this->description = $desc;
         $this->user_id = $user;
@@ -65,21 +65,20 @@ class Tache {
         $taches = json_decode($contenu);
     
         $taches = (is_array($taches))? $taches : [];
-
+        var_dump($contenu);
 
         // Variable de vérification du bon résultat de l'appel à la méthode (utilisateur enregistré)
 
         $lastkey = (array_key_last($taches) != null)? array_key_last($taches) : 0;
         $this->user_id = (!empty($taches))? $taches[$lastkey]->user_id + 1 : 1;
 
-        //Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode: <br>";
+        //Je crée un tableau avec mon nouvel objet courant car les $this ne peut pas être encoder après un json-encode
         $tache = get_object_vars($this);
  
         //J'ajoute cette tache à mon tableau de taches (\$taches)";
          array_push($taches, $tache);
-        // var_dump($taches);
 
-        //J'ouvre mon fichier users.json <br>";
+        //J'ouvre mon fichier users.json
         $handle = fopen("datas/taches.json", "w");
  
         $verif = (fwrite ($handle, json_encode($taches)))? true : false;
@@ -90,10 +89,10 @@ class Tache {
 
     static function getUserTache(int $id): array {
 
-        //Je récupère le contenu de mon fichier users.json :<br>";
+        //Je récupère le contenu de mon fichier users.json
         $contenu = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";
         //var_dump($contenu);
-        //Je décode mon JSON en structure PHP (tableau associatif) :<br>";
+        //Je décode mon JSON en structure PHP (tableau associatif)
         $taches = json_decode($contenu);
     
         $taches = (is_array($taches))? $taches : [];
@@ -101,7 +100,7 @@ class Tache {
 
         $userTaches = []; 
         foreach($taches as $tache) {
-            if($tache->idtache == $id) {
+            if($tache->user_id == $id) {
                 array_push($userTaches, $tache);
             }
         }

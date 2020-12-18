@@ -51,7 +51,7 @@ function showFormUser(): array {
 
     require_once "Tache.php";
 
-    $taches = Tache::getUserTache($_SESSION[ 'user' ]["user_id"]);
+    $taches = Tache::getUserTache($_SESSION["user"]["user_id"]);
 
     return ["template" => "myspace.php", "datas" => $taches];
 }
@@ -124,14 +124,6 @@ function insertTache(){
 }
 
 
-
-// function password_hash(){
-
-// }
-
-
-
-
 ?>
 
 
@@ -153,7 +145,7 @@ function insertTache(){
 </nav>
 
 <!-- appel du template -->
-<?php require $template["template"]; ?>
+<?php require $template["template"] ?>
     
 </body>
 </html>

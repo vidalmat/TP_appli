@@ -104,14 +104,14 @@ class User {
     public function verifyUser(): bool{
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json"): "" ;
         $users = json_decode($contenu);
-        $users = ( is_array ($users))? $users : [];
+        $users = (is_array($users))? $users : [];
 
         $verif = false;
 
         foreach ($users as $user) {
-            if ($user->pseudo == $this->pseudo ) {
+            if ($user->pseudo == $this->pseudo) {
                 $verif = password_verify($this->password , $user->password);
-                $this->user_id = $user->user_id ;
+                $this->user_id = $user->user_id;
             }
         }
 
