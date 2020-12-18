@@ -9,6 +9,18 @@ require_once("index.php");
     <h1>Bienvenue sur mon organiseur personnel</h1>
 </div>
 
+<?php if(isset($_SESSION["errors"])): ?>
+
+    <ul>
+        <?php foreach($_SESSION["errors"] as $error): ?>
+            <li><?=$error ?></li>
+        <?php endforeach ?>
+    </ul>
+
+    <?php unset($_SESSION["errors"]) ?>
+
+<?php endif ?>
+
 <div class="conteneur_connexion">
 
     <div class="creation_compte">

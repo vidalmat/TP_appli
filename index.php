@@ -40,16 +40,23 @@ function showHome(): array {
 // cette fonction permet de définir la connexion d'un nouvel utilisateur, incluant une fonction verifyUser afin de vérifier le pseudo et le mdp
 function connectUser(){
     require_once "User.php";
+    if(!empty($_POST["pseudo"]) && !empty($_POST["password"])){
     
-    $user = new User$_POST["pseudo"], $_POST["password"]);
-    if($user->verifyUser()){
-        header("Location:index.php?route=formtache");
-        exit;
-    }else{
-        echo "une erreur s'est produite";
-        return ["template" => "accueil.php"];
-    }
-    
+        $user = new User($_POST["pseudo"], $_POST["password"]);
+        if($user->verifyUser()){
+            $_SESSION["user"] ["user_id"] = $user->getUserId();
+            $_SESSION["user"] ["pseudo"] = $user->getUserPseudo();
+
+            header("Location:index.php?route=formuser");
+            exit;
+        }else{
+            $_SESSION["errors"] ["connexion"] = "Une erreur s'est produite, identifiant et/ou mot de passe incorrect";
+        }
+        }else{
+            $_SESSION["errors"] ["champs"] = "l'ensemble des champs est obligatoire";
+        }
+    header("Location:index.php?route=accueil");
+    exit;
 }
 
 
@@ -76,15 +83,18 @@ function insert_user() {
         $user = new User($_POST["pseudo"], password_hash($_POST["password"], PASSWORD_DEFAULT)); // ajout de la fonctionnalité password_hash afin de crypter le mdp
         echo "Résultats : ";
         $user->saveUser();
-        header("Location:index.php?route=accueil");
-        exit;
 
     }else{
-         // Redirection temporaire pour débuguer (via var_dump)
-        header("Location:index.php?route=formuser");
-        exit;
-        var_dump($user);
+
+        // Je ne peux pas procéder à la suite de l'ajout d'un utilisateur
+        $_SESSION [ "errors" ] [ "connexion" ] = "Erreur lors de l'enregistrement" ;
     }
+
+      // Redirection temporaire pour débuguer (via var_dump)
+      header("Location:index.php?route=formuser");
+      exit;
+      var_dump($user);
+      
 }
 
 

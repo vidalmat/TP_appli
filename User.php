@@ -122,11 +122,29 @@ class User {
         foreach($users as $user) {
             if($user->pseudo == $this->pseudo) {
                 $verif = password_verify($this->password, $user->password); 
-
+                $this->user_id = $user->user_id;
             }
         }
         return $verif;
     }
 }
 
+
+// public function verifyUser(): bool{
+//     $verif = false;
+//     $tab = json_decode(file_get_contents("datas/users.json"));
+//     $tab = (is_array($tab))? $tab : [];
+    
+//     foreach($tab as $value) {
+//         if($value->pseudo == $this->pseudo && $value->password == $this->password) {
+//             $verif = true; 
+
+//         }
+//     }
+//     return $verif;
+// }
+// }
+
 ?>
+
+
